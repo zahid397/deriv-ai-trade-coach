@@ -279,4 +279,4 @@ For issues or questions:
 
 ---
 
-**Built with ❤️ for the Deriv Hackathon | December 2024**
+**Built with ❤️ for the Deriv Hackathon | December 2026
