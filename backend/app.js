@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const path = require('path');
 const config = require('./config/env');
 
 // Route imports
@@ -18,24 +17,12 @@ const errorHandler = require('./middleware/errorHandler');
 const app = express();
 
 // Security middleware
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https:"]
-    }
-  }
-}));
+app.use(helmet());
 
-// CORS configuration
+// CORS configuration (Hackathon safe + Vercel safe)
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://deriv-ai-trade-coach.vercel.app', 'https://*.vercel.app']
-    : ['http://localhost:3000', 'http://localhost:5173'],
-  credentials: true,
+  origin: '*',
+  credentials: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -50,8 +37,15 @@ app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 // Rate limiting
 app.use('/api/', rateLimiter);
 
-// Serve static files from public directory
-app.use(express.static(path.join(__dirname, '../public')));
+// ✅ Root route (important for Render test)
+app.get('/', (req, res) => {
+  res.json({
+    message: '🚀 AI Trading Coach Backend Running',
+    status: 'ok',
+    health: '/health',
+    api: '/api'
+  });
+});
 
 // API Routes
 app.use('/api/trades', tradesRouter);
@@ -86,9 +80,13 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Serve frontend for any other route (SPA support)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+// 404 fallback
+app.use((req, res) => {
+  res.status(404).json({
+    error: true,
+    message: 'Route not found',
+    availableRoutes: ['/health', '/api', '/api/trades', '/api/coach', '/api/history', '/api/session']
+  });
 });
 
 // Error handling (must be last)
