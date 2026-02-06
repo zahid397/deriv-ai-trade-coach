@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Coach | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-robot neon-cyan"></i>
+                <h1>AI Trading Coach</h1>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="coach">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>AI Coach</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#" class="nav-item" id="refresh-data">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Refresh Data</span>
+                </a>
+            </nav>
+            
+            <div class="status-card">
+                <div class="status-header">
+                    <span>Backend Status</span>
+                    <span class="status-badge" id="status-badge">Checking...</span>
+                </div>
+                <div class="status-footer">
+                    <small>API: deriv-ai-trade-coach</small>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title">
+                    <h2 id="page-title">Trading Dashboard</h2>
+                    <p id="page-subtitle">Real-time insights and AI coaching</p>
+                </div>
+                <div class="header-actions">
+                    <div class="user-profile">
+                        <span>Demo Trader</span>
+                        <div class="avatar">DT</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="dashboard-section active">
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card glass">
+                        <div class="kpi-header">
+                            <h3>Portfolio Value</h3>
+                            <i class="fas fa-wallet neon-cyan"></i>
+                        </div>
+                        <div class="kpi-value" id="portfolio-value">$0</div>
+                        <div class="kpi-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+2.4% today</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card glass">
+                        <div class="kpi-header">
+                            <h3>Win Rate</h3>
+                            <i class="fas fa-trophy neon-green"></i>
+                        </div>
+                        <div class="kpi-value" id="win-rate">0%</div>
+                        <div class="kpi-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+5.2% this week</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card glass">
+                        <div class="kpi-header">
+                            <h3>Total Trades</h3>
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="kpi-value" id="total-trades">0</div>
+                        <div class="kpi-trend">
+                            <span>Last 30 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card glass">
+                        <div class="kpi-header">
+                            <h3>Risk Score</h3>
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="kpi-value" id="risk-score">0/100</div>
+                        <div class="kpi-trend negative">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>Needs improvement</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Trades Table -->
+                <div class="section-card glass">
+                    <div class="card-header">
+                        <h3>Recent Trades</h3>
+                        <button class="btn-icon" id="refresh-trades">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="trades-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Type</th>
+                                    <th>Entry</th>
+                                    <th>Exit</th>
+                                    <th>P/L</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trades-table-body">
+                                <!-- Data will be populated here -->
+                                <tr class="loading-row">
+                                    <td colspan="7">
+                                        <div class="loading-spinner"></div>
+                                        <span>Loading trades...</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Coach Section -->
+            <section id="coach-section" class="coach-section">
+                <div class="coach-container">
+                    <div class="section-card glass chat-container">
+                        <div class="card-header">
+                            <h3><i class="fas fa-robot neon-cyan"></i> AI Trading Coach</h3>
+                            <div class="coach-status">
+                                <span class="status-online" id="coach-status">Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message ai-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-sender">AI Coach</div>
+                                    <div class="message-text">
+                                        Hello! I'm your AI Trading Coach. Ask me anything about your trades, strategies, or risk management. How can I help you today?
+                                    </div>
+                                    <div class="message-time">Just now</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <div class="typing-indicator" id="typing-indicator">
+                                <span>AI Coach is typing</span>
+                                <div class="typing-dots">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <textarea 
+                                    id="message-input" 
+                                    placeholder="Ask your trading question... (e.g., 'Analyze my recent trades', 'How can I improve my risk score?')" 
+                                    rows="2"
+                                ></textarea>
+                                <button id="send-button" class="btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send
+                                </button>
+                            </div>
+                            <div class="input-hint">
+                                <small>Press <kbd>Enter</kbd> to send, <kbd>Shift+Enter</kbd> for new line</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-questions glass">
+                        <h4>Quick Questions</h4>
+                        <div class="questions-grid">
+                            <button class="quick-question" data-question="Analyze my recent trade performance">
+                                Analyze performance
+                            </button>
+                            <button class="quick-question" data-question="Suggest risk management improvements">
+                                Risk suggestions
+                            </button>
+                            <button class="quick-question" data-question="What trading patterns do you see in my history?">
+                                Identify patterns
+                            </button>
+                            <button class="quick-question" data-question="Give me tips to increase my win rate">
+                                Win rate tips
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
