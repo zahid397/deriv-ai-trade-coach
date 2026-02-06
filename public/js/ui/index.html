@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Coach | Smart Trading Assistant</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header glass-effect">
+            <div class="logo">
+                <div class="logo-icon">
+                    🤖
+                </div>
+                <h1 class="logo-text">AI Trading Coach</h1>
+                <span class="badge badge-info" id="ai-mode">Live AI</span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button class="btn btn-secondary btn-sm" id="theme-toggle">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="btn btn-secondary btn-sm" id="refresh-data">
+                    🔄 Refresh
+                </button>
+                <div class="relative">
+                    <button class="btn btn-primary" id="export-data">
+                        📊 Export Data
+                    </button>
+                    <input type="file" id="import-data" accept=".json" style="display: none;">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Column: Dashboard -->
+            <div class="dashboard-column">
+                <!-- Stats Cards -->
+                <section class="mb-6">
+                    <h2 class="section-title">Dashboard Overview</h2>
+                    <div id="stats-container" class="dashboard-grid"></div>
+                </section>
+
+                <!-- Charts -->
+                <section class="mb-6">
+                    <div id="charts-container"></div>
+                </section>
+
+                <!-- Recent Trades -->
+                <section class="mb-6">
+                    <h2 class="section-title">Recent Activity</h2>
+                    <div id="trades-container"></div>
+                </section>
+            </div>
+
+            <!-- Right Column: Coach & Market -->
+            <div class="sidebar-column">
+                <!-- AI Coach Panel -->
+                <section class="mb-6">
+                    <div class="coach-panel">
+                        <div class="coach-header">
+                            <div class="coach-status">
+                                <span class="status-indicator active" id="coach-status"></span>
+                                <span>AI Trading Coach</span>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" id="analyze-button">
+                                🔍 Analyze Performance
+                            </button>
+                        </div>
+                        
+                        <div class="coach-messages" id="coach-messages">
+                            <!-- Messages will be loaded here -->
+                        </div>
+                        
+                        <div class="coach-input">
+                            <form id="coach-form" class="w-full flex gap-2">
+                                <input type="text" id="coach-input" 
+                                       placeholder="Ask about markets, trades, or psychology..." 
+                                       class="flex-1">
+                                <button type="submit" class="btn btn-primary" id="send-button">
+                                    Send
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Market Overview -->
+                <section class="mb-6">
+                    <h2 class="section-title">Market Overview</h2>
+                    <div id="market-container"></div>
+                </section>
+
+                <!-- Bias Detection -->
+                <section class="mb-6">
+                    <h2 class="section-title">Behavioral Insights</h2>
+                    <div id="biases-container"></div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section>
+                    <div class="card">
+                        <h3 class="card-title mb-4">Quick Actions</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="btn btn-secondary quick-action" data-action="analyze-performance">
+                                📈 Analyze Performance
+                            </button>
+                            <button class="btn btn-secondary quick-action" data-action="market-outlook">
+                                🌍 Market Outlook
+                            </button>
+                            <button class="btn btn-secondary quick-action" data-action="risk-assessment">
+                                ⚠️ Risk Assessment
+                            </button>
+                            <button class="btn btn-secondary quick-action" data-action="bias-check">
+                                🧠 Bias Check
+                            </button>
+                            <button class="btn btn-secondary quick-action" data-action="strategy-review">
+                                📋 Strategy Review
+                            </button>
+                            <button class="btn btn-secondary" id="clear-data">
+                                🗑️ Clear Data
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <span>AI Trading Coach v1.0</span>
+                    <span class="text-tertiary">•</span>
+                    <span>Educational Tool Only</span>
+                    <span class="text-tertiary">•</span>
+                    <span>Not Financial Advice</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Documentation</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-indicator" class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Loading AI Trading Coach...</p>
+    </div>
+
+    <!-- Error Display -->
+    <div id="error-display" class="error-display" style="display: none;"></div>
+
+    <!-- JavaScript -->
+    <script src="js/core/api.js"></script>
+    <script src="js/core/state.js"></script>
+    <script src="js/core/biasEngine.js"></script>
+    <script src="js/ui/dashboard.js"></script>
+    <script src="js/ui/coach.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
