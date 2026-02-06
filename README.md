@@ -1,286 +1,324 @@
-# AI Trading Coach - Complete Trading Assistant
+# AI Trading Coach 🚀
 
 <div align="center">
 
-🚀 **AI-Powered Trading Coach & Psychology Assistant**  
-*Your personal AI mentor for smarter trading decisions*
+![AI Trading Coach Banner](https://img.shields.io/badge/AI-Trading%20Coach-blue)
+![Hackathon](https://img.shields.io/badge/Built%20for-Hackathon-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
-[![Live Demo](https://img.shields.io/badge/DEMO-LIVE-brightgreen?style=for-the-badge)](https://deriv-ai-trade-coach.onrender.com)
-[![Frontend](https://img.shields.io/badge/Frontend-Cloudflare%20Pages-blue?style=for-the-badge)](https://pages.cloudflare.com)
-[![Backend](https://img.shields.io/badge/Backend-Render-9cf?style=for-the-badge)](https://render.com)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+**AI-powered trading assistant that detects psychological biases and provides real-time coaching**
+
+[Live Demo](https://deriv-ai-trade-coach.pages.dev) • [Backend API](https://deriv-ai-trade-coach.onrender.com) • [Video Demo](https://www.loom.com/share/YOUR_VIDEO_ID)
 
 </div>
 
-## 🎯 **What Problem We Solve**
+## ✨ Features
 
-Traders lose billions due to **emotional decisions**, **psychological biases**, and **lack of real-time guidance**. Our AI Trading Coach provides:
+### 🤖 **AI Trading Coach**
+- Real-time market analysis with buy/sell signals
+- Personalized coaching based on your trading patterns
+- Psychological bias detection (loss aversion, overconfidence, revenge trading)
+- Trade analysis with confidence scores
 
-- 🤖 **Real-time AI coaching** during trades
-- 🧠 **Psychological bias detection** (Loss Aversion, Revenge Trading, Overconfidence)
-- 📊 **Performance analytics** with actionable insights
-- 📈 **Market sentiment analysis** powered by AI
-- 🎯 **Personalized trade recommendations**
+### 📊 **Performance Dashboard**
+- Live P&L tracking with profit/loss visualization
+- Win rate analytics (24H, 30D, All-time)
+- Risk score assessment (1-10 scale)
+- Portfolio value monitoring
+- Interactive charts for P&L over time
 
-## ✨ **Key Features**
+### 🧠 **Behavioral Psychology**
+- **Loss Aversion Detection**: Identify if you're holding losers too long
+- **Overconfidence Alerts**: Warn when winning streaks lead to excessive risk
+- **Revenge Trading Prevention**: Stop emotional trading after losses
+- Real-time bias alerts with actionable advice
 
-| Feature | Description | Impact |
-|---------|-------------|--------|
-| **🎯 Real-Time AI Coaching** | Get live advice during market hours | Reduces emotional trading by 65% |
-| **🧠 Bias Detection** | Automatically detects 5+ trading biases | Prevents common psychological mistakes |
-| **📊 Trade Analysis** | Deep analysis of every trade with AI insights | Improves win rate by 40% |
-| **📈 Market Sentiment** | AI-powered market mood analysis | Better timing of entries/exits |
-| **📱 Mobile-Friendly** | Works perfectly on all devices | Trade anywhere, anytime |
-| **💾 Offline Mode** | Works without internet connection | Never lose coaching during outages |
+### 📈 **Trade Analysis**
+- Detailed trade execution analysis
+- Price action visualization with entry/exit points
+- AI-powered trade explanations
+- Confidence scoring for each analysis
+- Improvement suggestions
 
-## 🏗️ **Architecture**
+### ⚡ **Real-time Features**
+- Live market data for BTC/USD, ETH/USD
+- Volatility alerts with buy/sell signals
+- RSI, MACD indicators
+- Market sentiment analysis
+- Portfolio updates in real-time
+
+## 🏗️ Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Cloudflare Pages (Frontend)              │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │  HTML + CSS + JS │ Real-time UI │ Offline Support  │   │
-│  └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                            ↑
+│                    Cloudflare Pages (Frontend)               │
+│  https://deriv-ai-trade-coach.pages.dev                     │
+├─────────────────────────────────────────────────────────────┤
+│  • Single Page Application                                  │
+│  • Real-time UI updates                                     │
+│  • Offline capability with localStorage                     │
+│  • Responsive design for all devices                        │
+└───────────────────────┬─────────────────────────────────────┘
+                        │ HTTPS API Calls
+                        ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    Render.com (Backend API)                 │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │ Node.js + Express │ Groq AI API │ Trade Database   │   │
-│  └─────────────────────────────────────────────────────┘   │
+│                    Render.com (Backend)                      │
+│  https://deriv-ai-trade-coach.onrender.com                  │
+├─────────────────────────────────────────────────────────────┤
+│  • Express.js REST API                                      │
+│  • AI Integration (Groq API + Fallback)                     │
+│  • Trade analysis & statistics                              │
+│  • Session management                                       │
+│  • Rate limiting & error handling                           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 **Quick Start**
+## 🚀 Quick Start
 
-### Option 1: Use Live Demo (Recommended)
-Visit our live deployment: **[https://deriv-ai-trade-coach.onrender.com](https://deriv-ai-trade-coach.onrender.com)**
+### 1. Try the Live Demo
+- **Frontend**: https://deriv-ai-trade-coach.pages.dev
+- **Backend API**: https://deriv-ai-trade-coach.onrender.com
+- **API Health Check**: https://deriv-ai-trade-coach.onrender.com/health
 
-### Option 2: Deploy Your Own Instance
+### 2. Local Development
 
-#### **Backend (Render.com)**
-```bash
-cd backend
-npm install
-# Set GROQ_API_KEY in environment variables
-npm start
-```
-
-#### **Frontend (Cloudflare Pages)**
-1. Connect your GitHub repository to Cloudflare Pages
-2. Set build command: (leave empty - static site)
-3. Set build output directory: `/frontend`
-4. Deploy!
-
-## 🛠️ **Tech Stack**
-
-### **Frontend**
-- **Vanilla HTML/CSS/JS** - No frameworks, maximum performance
-- **Service Workers** - Offline capability
-- **Chart.js** - Beautiful data visualization
-- **LocalStorage** - Client-side data persistence
-
-### **Backend**
-- **Node.js + Express** - Fast API server
-- **Groq AI API** - Lightning-fast LLM inference
-- **JWT Authentication** - Secure sessions
-- **Rate Limiting** - API protection
-
-### **Deployment**
-- **Render.com** - Backend hosting (free tier available)
-- **Cloudflare Pages** - Frontend hosting (global CDN)
-- **GitHub Actions** - Automated deployment
-
-## 📁 **Project Structure**
-
-```
-deriv-ai-trade-coach/
-├── backend/                          # Deploy to Render.com
-│   ├── app.js                        # Main Express server
-│   ├── routes/                       # API endpoints
-│   │   ├── trades.js                 # Trade management
-│   │   ├── coach.js                  # AI coaching
-│   │   ├── history.js                # Performance history
-│   │   └── session.js                # User sessions
-│   ├── services/                     # Business logic
-│   │   ├── groqService.js            # AI integration
-│   │   └── tradeAnalyzer.js          # Analytics engine
-│   └── data/                         # Sample data
-│
-├── frontend/                         # Deploy to Cloudflare Pages
-│   ├── index.html                    # Main HTML file
-│   ├── style.css                     # All styles
-│   └── script.js                     # All JavaScript
-│
-└── docs/                             # Documentation
-    ├── DEMO_SCRIPT.md                # Video demo script
-    └── ARCHITECTURE.md               # Technical details
-```
-
-## 🔧 **Configuration**
-
-### **Environment Variables (Backend)**
-```env
-GROQ_API_KEY=your_groq_api_key_here
-NODE_ENV=production
-PORT=3000
-RATE_LIMIT_WINDOW=900000
-RATE_LIMIT_MAX=100
-```
-
-### **Getting Groq API Key**
-1. Sign up at [GroqCloud](https://console.groq.com)
-2. Create new API key
-3. Copy and paste into Render environment variables
-
-## 📊 **API Endpoints**
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/trades` | Get all trades |
-| `POST` | `/api/trades` | Add new trade |
-| `POST` | `/api/coach/advice` | Get AI coaching |
-| `GET` | `/api/history` | Performance history |
-| `GET` | `/health` | Health check |
-
-## 🎨 **UI/UX Design**
-
-### **Dashboard View**
-```
-┌─────────────────────────────────────────────────────────────┐
-│  🎯 TODAY'S P/L: +$1,250.50 (+1.2%)                         │
-│  📊 BTC/USD: $95,900 ▲ 1.2%                                 │
-│  🧠 WIN RATE: 78% | AI ACCURACY: 85%                        │
-│  💰 PORTFOLIO VALUE: $105,400.20                            │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### **Coach Panel**
-```
-🤖 AI COACH: "Market showing strong bullish momentum. 
-   Consider long positions with stop-loss at $94,800."
-```
-
-### **Bias Detection**
-```
-⚠️ LOSS AVERSION DETECTED: 
-   You're holding losing trades too long. 
-   Recommendation: Set strict stop losses.
-```
-
-## 🎯 **Use Cases**
-
-### **For Retail Traders**
-- Get unbiased AI advice during emotional trades
-- Identify and overcome psychological biases
-- Track performance with detailed analytics
-
-### **For Trading Educators**
-- Use as teaching tool for trading psychology
-- Demonstrate real-time decision making
-- Show impact of emotions on trading
-
-### **For Trading Teams**
-- Monitor team performance
-- Identify common behavioral patterns
-- Improve collective decision making
-
-## 📈 **Performance Metrics**
-
-- **Page Load Time:** < 2 seconds
-- **AI Response Time:** < 3 seconds
-- **Offline Capability:** Full functionality
-- **Mobile Performance:** 90+ Lighthouse score
-- **API Uptime:** 99.9% (Render SLA)
-
-## 🔒 **Security Features**
-
-- ✅ HTTPS only
-- ✅ CORS protection
-- ✅ Rate limiting
-- ✅ Input validation
-- ✅ No sensitive data storage
-- ✅ JWT session management
-
-## 🌐 **Browser Support**
-
-- Chrome 80+ ✅
-- Firefox 75+ ✅
-- Safari 13+ ✅
-- Edge 80+ ✅
-- Mobile Safari ✅
-- Chrome Mobile ✅
-
-## 🤝 **Contributing**
-
-We welcome contributions! Here's how:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your changes (`git commit -m 'Add AmazingFeature'`)
-4. **Push** to the branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
-
-### **Development Setup**
+#### Backend Setup:
 ```bash
 # Clone repository
 git clone https://github.com/yourusername/deriv-ai-trade-coach.git
+cd deriv-ai-trade-coach/backend
 
-# Install backend dependencies
-cd backend
+# Install dependencies
 npm install
 
-# Install frontend dependencies (none - vanilla JS)
-cd ../frontend
+# Set up environment variables
+cp .env.example .env
+# Add your GROQ_API_KEY (optional - app works without it)
 
-# Start development
+# Start development server
 npm run dev
+# Server runs at http://localhost:3000
 ```
 
-## 📚 **Documentation**
+#### Frontend Setup:
+```bash
+cd ../frontend
 
-- **[API Documentation](docs/API.md)** - Complete API reference
-- **[Architecture](docs/ARCHITECTURE.md)** - System design details
-- **[Demo Script](docs/DEMO_SCRIPT.md)** - Video demo script for hackathon
-- **[Deployment Guide](docs/DEPLOYMENT.md)** - Step-by-step deployment
+# Open index.html in browser or use Live Server
+# Configure backend URL in script.js if needed
+```
 
-## 🚨 **Troubleshooting**
+## 🎯 Use Cases
 
-| Issue | Solution |
-|-------|----------|
-| **AI not responding** | Check GROQ_API_KEY in environment |
-| **Can't add trades** | Check backend is running on port 3000 |
-| **Offline mode not working** | Clear browser cache and reload |
-| **Slow performance** | Check internet connection, use demo mode |
+### For Traders:
+- **New Traders**: Learn trading psychology and avoid common mistakes
+- **Experienced Traders**: Get AI-powered second opinions on trades
+- **Discipline Improvement**: Break emotional trading habits
+- **Performance Tracking**: Monitor win rates and risk metrics
 
-## 📞 **Support**
+### For Hackathon Judges:
+- **Complete System**: Full-stack application with frontend + backend
+- **AI Integration**: Real AI with fallback to mock responses
+- **Real-time Features**: Live updates and interactive charts
+- **Production Ready**: Deployed on Cloudflare Pages + Render.com
+- **Zero Cost**: Free hosting, free AI API (fallback included)
 
-- **GitHub Issues:** [Report bugs](https://github.com/yourusername/deriv-ai-trade-coach/issues)
-- **Email:** support@tradingcoach.ai
-- **Discord:** [Join community](https://discord.gg/your-invite-link)
+## 🔧 Technical Implementation
 
-## 📄 **License**
+### Frontend (Cloudflare Pages)
+- **Vanilla JavaScript** - No frameworks for maximum performance
+- **CSS3 with Variables** - Dark/light theme support
+- **Canvas Charts** - Custom chart rendering
+- **Service Workers** - Offline capability
+- **LocalStorage** - Data persistence
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Backend (Render.com)
+- **Express.js** - REST API server
+- **Groq API Integration** - AI-powered coaching
+- **Mock AI System** - Fallback when API key not available
+- **Rate Limiting** - 100 requests per 15 minutes
+- **CORS Enabled** - Secure cross-origin requests
 
-## 🙏 **Acknowledgments**
+### AI Features
+1. **Trade Analysis**: AI reviews each trade for mistakes and successes
+2. **Bias Detection**: Machine learning identifies psychological patterns
+3. **Market Coaching**: Real-time advice based on current conditions
+4. **Risk Assessment**: Calculates risk scores from trading behavior
 
-- **Groq Cloud** for providing amazing AI inference API
+## 📱 UI/UX Design
+
+### Dashboard Layout:
+```
+┌─────────────────────────────────────────────────────────────┐
+│ HEADER: AI Trading Coach | Portfolio: $105,400 | Win Rate: 78%│
+├───────────────┬───────────────────────────────┬─────────────┤
+│ STATS CARDS   │   LIVE MARKET DATA            │   COACH     │
+│ • Today's P&L │   • BTC/USD Price             │   PANEL     │
+│ • Win Rate    │   • RSI/MACD Indicators       │   (AI Chat) │
+│ • Risk Score  │   • Volatility Alerts         │             │
+├───────────────┼───────────────────────────────┼─────────────┤
+│ RECENT TRADES │   BEHAVIORAL INSIGHTS         │   QUICK     │
+│ • Trade List  │   • Bias Detection Cards      │   ACTIONS   │
+│ • P&L Charts  │   • Recommendations           │             │
+└───────────────┴───────────────────────────────┴─────────────┘
+```
+
+### Key Design Principles:
+- **Dark Theme First**: Optimal for trading interfaces
+- **Real-time Updates**: Live data without page refresh
+- **Mobile Responsive**: Works on all screen sizes
+- **Minimalist UI**: Focus on essential information
+- **Visual Feedback**: Clear success/error indicators
+
+## 🔌 API Endpoints
+
+### Backend API (Render.com)
+```
+GET    /health                    # Health check
+GET    /api                       # API info
+GET    /api/trades                # List all trades
+POST   /api/trades                # Add new trade
+GET    /api/trades/stats/summary  # Trading statistics
+POST   /api/coach/advice          # Get AI coaching
+GET    /api/coach/biases          # Detect biases
+GET    /api/history               # Complete trading history
+GET    /api/session/:id           # Session management
+```
+
+## 🎮 How to Use
+
+### 1. **Add Your First Trade**
+1. Click "Add Trade" button
+2. Enter symbol (BTCUSD, ETHUSD, etc.)
+3. Set entry/exit prices and position size
+4. Add notes about the trade
+5. Submit for AI analysis
+
+### 2. **Get AI Coaching**
+1. Type questions in the coach panel:
+   - "Should I buy BTC now?"
+   - "Analyze my recent trades"
+   - "What's my biggest bias?"
+   - "Market outlook for today"
+
+### 3. **Monitor Performance**
+- Watch real-time P&L updates
+- Check win rate improvements
+- Review bias detection alerts
+- Track portfolio growth
+
+### 4. **Improve Your Trading**
+- Read AI suggestions after each trade
+- Acknowledge and work on detected biases
+- Compare your stats over time
+- Use the coach for difficult decisions
+
+## 🛡️ Bias Detection System
+
+The AI monitors for these psychological biases:
+
+| Bias | Detection Method | Solution |
+|------|-----------------|----------|
+| **Loss Aversion** | Holding losers 2x longer than winners | Set strict stop losses |
+| **Overconfidence** | Increased position size after wins | Consistent position sizing |
+| **Revenge Trading** | Trading immediately after losses | Mandatory 1-hour break |
+| **Confirmation Bias** | Only seeing bullish/bearish signals | Seek contrary evidence |
+| **Anchoring** | Fixating on entry price | Use trailing stops |
+
+## 📊 Performance Metrics Tracked
+
+- **Win Rate**: Percentage of profitable trades
+- **Profit Factor**: Gross profits / gross losses
+- **Max Drawdown**: Largest peak-to-trough decline
+- **Sharpe Ratio**: Risk-adjusted returns
+- **Expectancy**: Average profit per trade
+- **Risk Score**: Behavioral risk assessment (1-100)
+
+## 🔄 Deployment
+
+### Frontend (Cloudflare Pages)
+1. Connect GitHub repository
+2. Set build command: (none - static site)
+3. Set output directory: `frontend`
+4. Deploy automatically on push
+
+### Backend (Render.com)
+1. New Web Service
+2. Connect GitHub repository
+3. Build command: `cd backend && npm install`
+4. Start command: `cd backend && node app.js`
+5. Add environment variables if using Groq API
+
+## 🧪 Testing the App
+
+### Without API Key (Mock Mode):
+- All AI features work with mock responses
+- Perfect for demo and testing
+- No rate limits or costs
+
+### With GROQ API Key:
+1. Get free API key from [GroqCloud](https://console.groq.com)
+2. Add to backend `.env` file:
+   ```
+   GROQ_API_KEY=your_key_here
+   ```
+3. Enjoy real AI responses
+
+## 🎥 Hackathon Submission
+
+### Demo Video Includes:
+1. **Problem Statement**: Emotional trading losses
+2. **Solution Overview**: AI psychology coach
+3. **Live Demo**: Adding trades, getting AI advice
+4. **Bias Detection**: Real-time alerts
+5. **Technical Architecture**: Frontend + backend explanation
+6. **Deployment**: Cloudflare Pages + Render.com
+
+### Key Highlights for Judges:
+- ✅ **Complete working application**
+- ✅ **Free hosting (zero cost)**
+- ✅ **Real AI + fallback system**
+- ✅ **Production-ready architecture**
+- ✅ **User-centric design**
+- ✅ **Real-time features**
+- ✅ **Behavioral psychology focus**
+
+## 📈 Future Roadmap
+
+- [ ] Multi-language support
+- [ ] Advanced charting with TradingView
+- [ ] Telegram/Discord bot integration
+- [ ] Social trading features
+- [ ] Advanced AI models (GPT-4, Claude)
+- [ ] Mobile app (React Native)
+- [ ] Paper trading simulator
+- [ ] Trading journal export
+
+## 👥 Team
+
+**AI Trading Coach** was built by a solo developer for the hackathon.
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Groq Cloud** for AI API access
 - **Render.com** for free backend hosting
-- **Cloudflare** for free CDN and pages hosting
-- **Chart.js** for beautiful data visualization
-- **All contributors** who helped build this project
+- **Cloudflare** for free frontend hosting
+- **Deriv** for hackathon platform
+- **Trading psychology researchers** for bias detection algorithms
 
 ---
 
 <div align="center">
 
-### **Ready to transform your trading?** 🚀
+**Start improving your trading psychology today!**
 
-[Try Live Demo](https://deriv-ai-trade-coach.onrender.com) •
-[View Source Code](https://github.com/yourusername/deriv-ai-trade-coach) •
-[Report Issue](https://github.com/yourusername/deriv-ai-trade-coach/issues)
+[🎯 Try Live Demo](https://deriv-ai-trade-coach.pages.dev) • [🐛 Report Issues](https://github.com/yourusername/deriv-ai-trade-coach/issues) • [💡 Request Features](https://github.com/yourusername/deriv-ai-trade-coach/issues)
 
-**Made with ❤️ for traders worldwide**
+*"The best investment you can make is in yourself." - Warren Buffett*
 
 </div>
