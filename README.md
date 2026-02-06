@@ -1,0 +1,1 @@
+# deriv-ai-trade-coach
